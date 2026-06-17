@@ -1,0 +1,304 @@
+:root {
+  /* ── Color tokens ───────────────────────────────────────── */
+  --midnight: #0b0f15;     /* page background */
+  --slate-den: #161d24;    /* card / panel background */
+  --moonsilver: #cfd9e0;   /* cool accent, headings, borders */
+  --ember: #d98a4e;        /* warm accent, the one bright moment */
+  --mist: #8b98a1;         /* secondary / muted text */
+  --bone: #e8ecee;         /* primary body text on dark */
+
+  /* ── Type tokens ────────────────────────────────────────── */
+  --font-display: 'Big Shoulders Display', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-arabic: 'Lalezar', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--midnight);
+  color: var(--bone);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Hero ───────────────────────────────────────────────── */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 1.5rem 4rem;
+  position: relative;
+  background: radial-gradient(
+    ellipse at 50% -10%,
+    rgba(207, 217, 224, 0.08),
+    transparent 60%
+  );
+}
+
+.pack-signature {
+  width: min(280px, 70vw);
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin: 0 0 0.75rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--bone);
+  margin: 0 0 1rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  color: var(--mist);
+  max-width: 36ch;
+  margin: 0 auto;
+  font-size: 30px;
+  line-height: 1.6;
+}
+
+.hero-subtitle code {
+  background: var(--slate-den);
+  color: var(--moonsilver);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+/* ── Members section ───────────────────────────────────── */
+
+.members-section {
+  padding: 3rem 1.5rem 5rem;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin: 0 0 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--bone);
+  margin: 0;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 820px) {
+  .members-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .members-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.member-card {
+  background: var(--slate-den);
+  border: 1px solid rgba(207, 217, 224, 0.08);
+  border-radius: 4px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  animation: fade-up 0.6s ease both;
+}
+
+.member-card:nth-child(1) { animation-delay: 0.02s; }
+.member-card:nth-child(2) { animation-delay: 0.08s; }
+.member-card:nth-child(3) { animation-delay: 0.14s; }
+.member-card:nth-child(4) { animation-delay: 0.2s; }
+.member-card:nth-child(5) { animation-delay: 0.26s; }
+.member-card:nth-child(6) { animation-delay: 0.32s; }
+.member-card:nth-child(7) { animation-delay: 0.38s; }
+
+.member-card:hover,
+.member-card:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--ember);
+  box-shadow: 0 14px 28px rgba(217, 138, 78, 0.14);
+}
+
+.member-photo-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 2px;
+  border: 1px solid rgba(207, 217, 224, 0.18);
+  margin-bottom: 1rem;
+  background: #0d1217;
+}
+
+.member-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.member-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--mist);
+  margin: 0 0 0.35rem;
+}
+
+.member-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--moonsilver);
+  letter-spacing: 0.01em;
+  margin: 0 0 0.5rem;
+}
+
+.member-intro {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--bone);
+  margin: 0;
+}
+
+/* ── Group photo / closing section ─────────────────────── */
+
+.group-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 1.5rem 7rem;
+  position: relative;
+}
+
+.group-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--moonsilver), transparent);
+  opacity: 0.4;
+}
+
+.group-photo-frame {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(207, 217, 224, 0.25);
+  box-shadow: 0 0 60px rgba(207, 217, 224, 0.08);
+  margin-bottom: 2rem;
+  background: #0d1217;
+}
+
+.group-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.group-caption {
+  font-family: var(--font-arabic);
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  color: var(--ember);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.site-footer {
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mist);
+  opacity: 0.55;
+}
+
+/* ── Motion ─────────────────────────────────────────────── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
